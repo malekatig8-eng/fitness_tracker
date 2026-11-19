@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+const Color plum = Color(0xFF7B2150);
+const Color rose = Color(0xFFB34A74);
+const Color lightPink = Color(0xFFF7ECF1);
+const Color mediumPink = Color(0xFFF3DCE6);
+
 // Pages de Malek (accueil, connexion, compte, tableau de bord).
 // Elles n'ont pas de main() : l'application est lancée depuis exercices.dart.
 
@@ -21,7 +26,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF211A3C),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 28),
@@ -33,7 +38,7 @@ class WelcomePage extends StatelessWidget {
                 width: 100,
                 height: 100,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF8B5CF6),
+                  color: plum,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: const Icon(
@@ -49,7 +54,7 @@ class WelcomePage extends StatelessWidget {
               const Text(
                 "FitTrack",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: plum,
                   fontSize: 38,
                   fontWeight: FontWeight.bold,
                 ),
@@ -60,7 +65,7 @@ class WelcomePage extends StatelessWidget {
               const Text(
                 "Track. Improve. Achieve.",
                 style: TextStyle(
-                  color: Color(0xFFC4B5FD),
+                  color: rose,
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),
@@ -72,7 +77,7 @@ class WelcomePage extends StatelessWidget {
                 "Your personal fitness companion",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color(0xFFBDB5D6),
+                  color: Color(0xFF8A6A78),
                   fontSize: 15,
                 ),
               ),
@@ -93,7 +98,7 @@ class WelcomePage extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF8B5CF6),
+                    backgroundColor: plum,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
@@ -125,9 +130,9 @@ class WelcomePage extends StatelessWidget {
                     );
                   },
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.white,
+                    foregroundColor: plum,
                     side: const BorderSide(
-                      color: Color(0xFF8B5CF6),
+                      color: plum,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
@@ -170,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF211A3C),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 28),
@@ -182,11 +187,20 @@ class _LoginPageState extends State<LoginPage> {
               // Back button
               IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  } else {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const WelcomePage(),
+                      ),
+                    );
+                  }
                 },
                 icon: const Icon(
                   Icons.arrow_back,
-                  color: Colors.white,
+                  color: plum,
                   size: 28,
                 ),
               ),
@@ -199,7 +213,7 @@ class _LoginPageState extends State<LoginPage> {
                   width: 80,
                   height: 80,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF8B5CF6),
+                    color: plum,
                     borderRadius: BorderRadius.circular(24),
                   ),
                   child: const Icon(
@@ -216,8 +230,8 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(
                   "Welcome Back!",
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
+                  color: plum,
+                  fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -230,7 +244,7 @@ class _LoginPageState extends State<LoginPage> {
                   "Login to continue your fitness journey",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xFFBDB5D6),
+                    color: Color(0xFF8A6A78),
                     fontSize: 15,
                   ),
                 ),
@@ -242,7 +256,7 @@ class _LoginPageState extends State<LoginPage> {
               const Text(
                 "Email",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: plum,
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
@@ -257,7 +271,7 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: "Enter your email",
                   prefixIcon: const Icon(Icons.email_outlined),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: lightPink,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide.none,
@@ -271,7 +285,7 @@ class _LoginPageState extends State<LoginPage> {
               const Text(
                 "Password",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: plum,
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
@@ -298,7 +312,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: lightPink,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide.none,
@@ -318,7 +332,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: const Text(
                     "Forgot Password?",
                     style: TextStyle(
-                      color: Color(0xFFC4B5FD),
+                      color: rose,
                     ),
                   ),
                 ),
@@ -340,7 +354,7 @@ class _LoginPageState extends State<LoginPage> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF8B5CF6),
+                    backgroundColor: plum,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
@@ -372,7 +386,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: const Text(
                     "Create Account",
                     style: TextStyle(
-                      color: Color(0xFFC4B5FD),
+                      color: rose,
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
                     ),
@@ -413,7 +427,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF211A3C),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 28),
@@ -429,7 +443,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 },
                 icon: const Icon(
                   Icons.arrow_back,
-                  color: Colors.white,
+                  color: plum,
                   size: 28,
                 ),
               ),
@@ -442,7 +456,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   width: 75,
                   height: 75,
                   decoration: BoxDecoration(
-                    color: const Color(0xFF8B5CF6),
+                    color: plum,
                     borderRadius: BorderRadius.circular(22),
                   ),
                   child: const Icon(
@@ -459,8 +473,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 child: Text(
                   "Create Account",
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
+                  color: plum,
+                  fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -473,7 +487,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   "Start your fitness journey today",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xFFBDB5D6),
+                    color: Color(0xFF8A6A78),
                     fontSize: 15,
                   ),
                 ),
@@ -485,7 +499,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               const Text(
                 "Full Name",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: plum,
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
@@ -499,7 +513,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   hintText: "Enter your name",
                   prefixIcon: const Icon(Icons.person_outline),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: lightPink,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide.none,
@@ -513,7 +527,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               const Text(
                 "Email",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: plum,
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
@@ -528,7 +542,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   hintText: "Enter your email",
                   prefixIcon: const Icon(Icons.email_outlined),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: lightPink,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide.none,
@@ -542,7 +556,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               const Text(
                 "Password",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: plum,
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
@@ -569,7 +583,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: lightPink,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide.none,
@@ -583,7 +597,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               const Text(
                 "Confirm Password",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: plum,
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
@@ -611,7 +625,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     ),
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: lightPink,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                     borderSide: BorderSide.none,
@@ -630,7 +644,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                     print("Create Account clicked");
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF8B5CF6),
+                    backgroundColor: plum,
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
@@ -657,7 +671,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                   child: const Text(
                     "Already have an account? Login",
                     style: TextStyle(
-                      color: Color(0xFFC4B5FD),
+                      color: rose,
                       fontSize: 15,
                     ),
                   ),
@@ -683,27 +697,38 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF7F5FC),
+      backgroundColor: Colors.white,
 
       // AppBar
       appBar: AppBar(
-        backgroundColor: const Color(0xFF211A3C),
+        backgroundColor: Colors.white,
+        foregroundColor: plum,
+        surfaceTintColor: Colors.white,
         elevation: 0,
         title: const Text(
           "FitTrack",
           style: TextStyle(
-            color: Colors.white,
+            color: plum,
             fontWeight: FontWeight.bold,
           ),
         ),
         actions: [
-          IconButton(
+          TextButton(
             onPressed: () {
-              print("Profile clicked");
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginPage(),
+                ),
+                (route) => false,
+              );
             },
-            icon: const Icon(
-              Icons.person_outline,
-              color: Colors.white,
+            child: const Text(
+              "Log out",
+              style: TextStyle(
+                color: plum,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],
@@ -718,7 +743,7 @@ class HomePage extends StatelessWidget {
             const Text(
               "Good morning, Malek 👋",
               style: TextStyle(
-                color: Color(0xFF211A3C),
+                color: plum,
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
@@ -741,7 +766,7 @@ class HomePage extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color(0xFF8B5CF6),
+                color: plum,
                 borderRadius: BorderRadius.circular(22),
               ),
               child: Column(
@@ -796,7 +821,7 @@ class HomePage extends StatelessWidget {
             const Text(
               "Quick Actions",
               style: TextStyle(
-                color: Color(0xFF211A3C),
+                color: plum,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -865,14 +890,14 @@ class HomePage extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: const Color(0xFFE9E2FF),
+                color: mediumPink,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: const Row(
                 children: [
                   Icon(
                     Icons.emoji_events_outlined,
-                    color: Color(0xFF8B5CF6),
+                    color: plum,
                     size: 40,
                   ),
 
@@ -882,7 +907,7 @@ class HomePage extends StatelessWidget {
                     child: Text(
                       "Every workout counts. Keep moving and reach your goals!",
                       style: TextStyle(
-                        color: Color(0xFF211A3C),
+                        color: plum,
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
@@ -898,7 +923,7 @@ class HomePage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
-        selectedItemColor: const Color(0xFF8B5CF6),
+        selectedItemColor: plum,
         onTap: (index) {
           if (index == 1) {
             openAppPage(context, '/routines');
@@ -957,7 +982,7 @@ class _StatItem extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
-            color: Color(0xFFE9E2FF),
+            color: mediumPink,
             fontSize: 13,
           ),
         ),
@@ -1004,7 +1029,7 @@ class _ActionCard extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: const Color(0xFF8B5CF6),
+              color: plum,
               size: 32,
             ),
 
@@ -1014,7 +1039,7 @@ class _ActionCard extends StatelessWidget {
               title,
               textAlign: TextAlign.center,
               style: const TextStyle(
-                color: Color(0xFF211A3C),
+                color: plum,
                 fontWeight: FontWeight.w600,
               ),
             ),
